@@ -9,7 +9,7 @@ body{
 .container{
     width:80%;
     margin:auto;
-    overflow:hidden;
+    overflow-x:hidden;
 }
  ul{
     margin:0;
@@ -50,7 +50,7 @@ header a{
 }
 
 a{
-    color:#000000;
+    color:#960101;
     text-decoration:none;
     
     
@@ -150,7 +150,7 @@ header a:hover{
     float:left;
     text-align:center;
     width:30%;
-    padding:10px;
+    padding:5px;
 }
 
 #boxes .box img{
@@ -158,13 +158,13 @@ header a:hover{
 }
 
 /* Sidebar */
-#sidebar{
+aside#sidebar{
     float:right;
     width:30%;
     margin-top:10px; 
 }
 
-#sidebar .quote input, aside#sidebar .quote textarea{
+aside#sidebar .quote input, aside#sidebar .quote textarea{
     width:90%;
     padding:5px;
 }
