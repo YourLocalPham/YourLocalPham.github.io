@@ -1,0 +1,102 @@
+<html>
+    
+<head>
+    <title>Processing Game Demo (work in progress)</title>
+    <script type="text/javascript" src="./js/java.js"></script>
+</head>    
+    
+<body>
+    <script type= "text/processing">
+        PImage background;
+        PImage cow;
+        PImage asteroid;
+        int count = 0;
+        PImage bird;
+        int Bx = 0;
+        int mx = 0;
+        int bx = 0;
+        int x = 0;
+        int y = 0;
+        int Vy = 0;
+        int My = 0;
+        boolean [] keys = new boolean [128];
+        int gamestate = 0;
+        
+        void setup(){
+          size(1100, 700);
+          background = loadImage("./images/space.png");
+          cow = loadImage("./images/lol.png");
+          asteroid = loadImage("./images/ob.png");
+        }
+        
+        void draw(){
+          
+          image(background, 0 + bx, 0);
+          image(background, 1100 + bx, 0);
+          if(bx == - 1100){
+          bx = 0;
+          if(mx == -1100){
+          mx = 0;
+          }
+          }
+          bx = bx - 5;
+          mx = mx - 5;
+          move();
+          image(cow, x,My);
+          if((x == Bx)&&(y == 450)){
+          gamestate=2;
+          textSize(40); fill(255,0,0); //red
+          text("Get Rekted", 465, 300);
+          rect(500,360,140,55,10);
+          fill(0);
+          text("Restart",500,400);
+          if(mouseX > 500 && mouseX < 640 && mouseY >360 && mouseY <415){
+            textSize(40); fill(94, 232, 9);
+            rect(500,360,140,55,10);
+            fill(0);
+            text("Restart",500,400);
+            if(mousePressed){
+              gamestate = 0;
+              bx = 0;
+          }
+          }  
+          }
+          Bx = 1100 + mx;
+          image(asteroid, 0 + mx, 450);
+          image(asteroid, Bx , 450);
+          Vy++;
+          My = My + Vy;
+          if(My > 500){
+            Vy = 0;
+            My = 500;
+          }
+          if(My < 0){
+            Vy = 0;
+            My = 0;
+          }
+        }
+        void move(){
+          if (keys['w']) 
+              Vy = - 17;
+            
+            if (keys['d'])
+              x = x + 10;
+            
+            if (keys['a'])
+              x = x - 10;
+        }
+        
+        void keyPressed(){
+          keys[key] = true;
+        }
+        
+        void keyReleased(){
+          keys[key] = false;
+        }
+                
+    </script>
+
+    <canvas id="sketch" style="border:1px solid black;"></canvas>
+</body>
+
+</html>
